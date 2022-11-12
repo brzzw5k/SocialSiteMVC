@@ -11,7 +11,12 @@ public class DataStore
 
     private void Initialize()
     {
-
+        AddUser("User1");
+        AddUser("User2");
+        AddUser("User3");
+        
+        AddUserFriend("User1", "User2");
+        AddUserFriend("User2", "User3");
     }
     
     private DataStore()
