@@ -11,6 +11,8 @@ public class DataStore
 
     public void Initialize()
     {
+        _users = new List<User>();
+        
         AddUser("User1");
         AddUser("User2");
         AddUser("User3");
@@ -25,6 +27,11 @@ public class DataStore
         AddUserFriend("User3", "User4");
         AddUserFriend("User3", "User5");
         AddUserFriend("User4", "User5");
+    }
+    
+    private DataStore()
+    {
+        Initialize();
     }
 
     public static DataStore Instance
