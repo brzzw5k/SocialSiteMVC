@@ -26,7 +26,7 @@
     {
         <div class="card">
             <div class="card-body">
-                @user.UserName <a href="@Url.Action("RemoveUser", "Admin", new { userName = user.UserName })" class="btn btn-danger">Remove</a>
+                @user.UserName <a href="@Url.Action("RedirectToRemoveUser", "Admin", new { userName = user.UserName })" class="btn btn-danger">Remove</a>
             </div>
         </div>
     }
