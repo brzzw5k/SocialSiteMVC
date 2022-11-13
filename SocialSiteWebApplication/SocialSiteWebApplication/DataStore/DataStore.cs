@@ -88,6 +88,11 @@ public class DataStore
                 throw new Exception("Friend not found");
             }
             
+            if (user == friend)
+            {
+                throw new Exception("User cannot be friend with himself");
+            }
+            
             if (user.Friends.Contains(friend))
             {
                 throw new Exception($"{friendUserName} is already a friend of {userName}");
