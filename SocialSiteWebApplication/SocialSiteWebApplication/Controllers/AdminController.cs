@@ -34,16 +34,8 @@ public class AdminController: Controller
         return RedirectToAction("AddUser", "User", new {userName = newUserName});
     }
     
-    public IActionResult RemoveUser(string userName)
+    public IActionResult RedirectToRemoveUser(string userName)
     {
-        try
-        {
-            _dataStore.RemoveUser(userName);
-            return RedirectToAction("Index");
-        }
-        catch (Exception ex)
-        {
-            return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = ex.Message});
-        }
+        return RedirectToAction("RemoveUser", "User", new {userName = userName});
     }
 }
