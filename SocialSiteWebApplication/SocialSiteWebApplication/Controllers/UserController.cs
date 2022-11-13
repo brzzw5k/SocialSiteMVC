@@ -43,12 +43,38 @@ public class UserController: Controller
         }
     }
     
+    public IActionResult RemoveUser(string userName)
+    {
+        try
+        {
+            _dataStore.RemoveUser(userName);
+            return RedirectToAction("Index", "Admin");
+        }
+        catch (Exception ex)
+        {
+            return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = ex.Message});
+        }
+    }
+    
     public IActionResult AddFriend(string userName, string friendName)
     {
         try
         {
             _dataStore.AddUserFriend(userName, friendName);
-            return RedirectToAction("Index", new { userName = userName });
+            return RedirectToAction("Index");
+        }
+        catch (Exception ex)
+        {
+            return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = ex.Message });
+        }
+    }
+    
+    public IActionResult RemoveFriend(string userName, string friendName)
+    {
+        try
+        {
+            _dataStore.RemoveUserFriend(userName, friendName);
+            return RedirectToAction("Index");
         }
         catch (Exception ex)
         {

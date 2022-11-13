@@ -6,4 +6,20 @@
 <div class="text-center">
     <h1 class="display-4">Welcome, @Model.UserName!</h1>
 
+    <form asp-action="AddFriend" method="Post" asp-route-newUserName="newFriendUserName">
+                <div class="form-group">
+                    <label for="userNameInput">Username: </label>
+                    <input id="userNameInput" asp-for="NewFriendUserName"/>
+                </div>
+            <input type="submit" value="Add User" class="btn btn-primary"/>
+        </form>
+    
+        @foreach(var friend in Model.Friends)
+        {
+            <div class="card">
+                <div class="card-body">
+                    @friend.UserName <a href="@Url.Action("RemoveFriend", "User", new { userName = @Model.UserName, friendName = friend.UserName})" class="btn btn-danger">Remove</a>
+                </div>
+            </div>
+        }
 </div>
