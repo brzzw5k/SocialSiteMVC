@@ -9,7 +9,7 @@ public class DataStore
     private static readonly object Lock = new object();
     private List<User> _users = new List<User>();
 
-    private void Initialize()
+    public void Initialize()
     {
         AddUser("User1");
         AddUser("User2");
@@ -17,11 +17,6 @@ public class DataStore
         
         AddUserFriend("User1", "User2");
         AddUserFriend("User2", "User3");
-    }
-    
-    private DataStore()
-    {
-        Initialize();
     }
 
     public static DataStore Instance
@@ -38,7 +33,6 @@ public class DataStore
     private User? GetUser(string userName)
     {
         return _users.FirstOrDefault(u => u.UserName == userName);
-
     }
     
     public List<User> GetUsers()

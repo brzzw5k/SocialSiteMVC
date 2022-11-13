@@ -19,18 +19,16 @@ public class HomeController : Controller
     }
     
     [HttpPost]
-    public IActionResult RedirectToUser()
+    public IActionResult RedirectToUser(string userName)
     {
-        Request.Form.TryGetValue("username", out var username);
-        return username != "Admin" ? 
-            RedirectToAction("Index", "User", new {userName = username}):
-            RedirectToAction("Index", "Admin", new {userName = username});
+        return userName == "Admin"
+            ? RedirectToAction("Index", "Admin", new { userName })
+            : RedirectToAction("Index", "User", new { userName });
     }
-    
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public IActionResult Error(string message)
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = message});
     }
 }

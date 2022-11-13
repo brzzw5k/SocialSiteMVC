@@ -1,9 +1,34 @@
 @model AdminViewModel
+    
 @{
     ViewData["Title"] = "Admin Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome, Admin!</h1>
-    <p class="lead">This is the admin page.</p>
+    <p>Here you can initialize the DB</p>
+    
+    <div>
+        <a href="@Url.Action("Initialize", "Admin")" class="btn btn-primary">Initialize</a>
+    </div>
+    
+    <p>Here you can manage your users.</p>
+
+    <form asp-action="RedirectToAddUser" method="Post" asp-route-newUserName="newUserName">
+            <div class="form-group">
+                <label for="userNameInput">Username: </label>
+                <input id="userNameInput" asp-for="NewUserName"/>
+            </div>
+        <input type="submit" value="Add User" class="btn btn-primary"/>
+    </form>
+
+    @foreach(var user in Model.Users)
+    {
+        <div class="card">
+            <div class="card-body">
+                @user.UserName <a href="@Url.Action("RemoveUser", "Admin", new { userName = user.UserName })" class="btn btn-danger">Remove</a>
+            </div>
+        </div>
+    }
+
 </div>
