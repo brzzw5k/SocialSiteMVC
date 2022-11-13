@@ -14,9 +14,17 @@ public class DataStore
         AddUser("User1");
         AddUser("User2");
         AddUser("User3");
+        AddUser("User4");
+        AddUser("User5");
         
         AddUserFriend("User1", "User2");
+        AddUserFriend("User1", "User3");
+        AddUserFriend("User1", "User4");
         AddUserFriend("User2", "User3");
+        AddUserFriend("User2", "User4");
+        AddUserFriend("User3", "User4");
+        AddUserFriend("User3", "User5");
+        AddUserFriend("User4", "User5");
     }
 
     public static DataStore Instance
