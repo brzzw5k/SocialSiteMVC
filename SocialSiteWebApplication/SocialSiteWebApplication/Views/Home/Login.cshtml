@@ -1,7 +1,17 @@
+@model UserViewModel
 @{
     ViewData["Title"] = "Login Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Login</h1>
+    
+    @using (Html.BeginForm("RedirectToUser", "Home", FormMethod.Post))
+        {
+            <form>
+                <label for="username">Username:</label>
+                @Html.TextBoxFor(user => user.UserName)
+                <input type="submit" value="Submit">
+            </form>
+        }
 </div>

@@ -18,6 +18,15 @@ public class HomeController : Controller
         return View();
     }
     
+    [HttpPost]
+    public IActionResult RedirectToUser()
+    {
+        Request.Form.TryGetValue("username", out var username);
+        return username != "Admin" ? 
+            RedirectToAction("Index", "User", new {userName = username}):
+            RedirectToAction("Index", "Admin", new {userName = username});
+    }
+    
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
