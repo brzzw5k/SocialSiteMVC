@@ -13,4 +13,9 @@ public class User
         Friends = new List<User>();
         CreatedDate = DateTime.Now;
     }
+
+    public override string ToString()
+    {
+        return $"{UserName}";
+    }
 }
