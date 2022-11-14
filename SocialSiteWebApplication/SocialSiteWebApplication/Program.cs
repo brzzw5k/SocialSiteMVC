@@ -13,6 +13,8 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseStatusCodePages();
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -23,9 +25,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Login}");
-
-app.MapControllerRoute(
-        name: "user",
-        pattern: "{controller=User}/{action=Index}/{username?}");
 
 app.Run();
