@@ -17,23 +17,27 @@ public class AdminController: Controller
         _dataStore = DataStore.DataStore.Instance;
     }
     
+    [Route("User/List")]
     public IActionResult Index()
     {
         var users = _dataStore.GetUsers();
         return View("Index", new AdminViewModel(users));
     }
     
+    [Route("Init")]
     public IActionResult Initialize()
     {
         _dataStore.Initialize();
         return RedirectToAction("Index");
     }
-
+    
+    [Route("User/Add/{newUserName}")]
     public IActionResult RedirectToAddUser(string newUserName)
     {
         return RedirectToAction("AddUser", "User", new {userName = newUserName});
     }
     
+    [Route("User/Del/{userName}")]
     public IActionResult RedirectToRemoveUser(string userName)
     {
         return RedirectToAction("RemoveUser", "User", new {userName = userName});

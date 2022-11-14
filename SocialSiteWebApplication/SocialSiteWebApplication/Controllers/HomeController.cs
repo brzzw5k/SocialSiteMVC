@@ -18,7 +18,7 @@ public class HomeController : Controller
         return View();
     }
     
-    [HttpPost]
+    [Route("Login/{userName}")]
     public IActionResult RedirectToUser(string userName)
     {
         return userName == "Admin"
@@ -26,6 +26,7 @@ public class HomeController : Controller
             : RedirectToAction("Index", "User", new { userName });
     }
 
+    [Route("Error")]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error(string message)
     {
