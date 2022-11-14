@@ -18,3 +18,10 @@
         <strong>Message:</strong> <code>@Model.Message</code>
     </p>
 }
+
+@if (Model.ShowError)
+{
+    <p>
+        <strong>Error:</strong> <code>@Model.Error</code>
+    </p>
+}
