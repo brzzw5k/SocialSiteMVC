@@ -31,10 +31,10 @@
         <input type="submit" value="Export Friends" class="btn btn-primary"/>
     </form>
     
-    <form asp-action="ImportFriends" method="Post" asp-route-userName="userName">
+    <form asp-action="ImportFriends" method="Post" asp-route-friendsFile="friendsFile" enctype="multipart/form-data">
         <div class="form-group">
             <input type="hidden" value="@Model.UserName" asp-for="UserName"/>
-            <input type="file" class="btn btn-primary"/>
+            <input type="file" class="btn btn-primary" name="friendsFile"/>
         </div>
         <input type="submit" value="Import Friends" class="btn btn-primary"/>
     </form>

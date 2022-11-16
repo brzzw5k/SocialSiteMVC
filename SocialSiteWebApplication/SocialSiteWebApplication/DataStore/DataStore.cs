@@ -45,7 +45,7 @@ public class DataStore
         }
     }
     
-    private User? GetUser(string userName)
+    public User? GetUser(string userName)
     {
         return _users.FirstOrDefault(u => u.UserName == userName);
     }

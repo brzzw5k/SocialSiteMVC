@@ -111,7 +111,21 @@ public class UserController: Controller
     {
         try
         {
-            return View("Index", new UserViewModel(userName, new List<User>()));
+            var friendsFile = Request.Form.Files[0];
+
+            using (var reader = new StreamReader(friendsFile.OpenReadStream()))
+            {
+                while (reader.Peek() >= 0)
+                {
+                    var line = reader.ReadLine();
+                    if (line != "Name" && !String.IsNullOrEmpty(line))
+                    {
+                        _dataStore.AddUserFriend(userName, line);
+                    }
+                }
+            }
+            
+            return RedirectToAction("Index", new { userName = userName });
         }
         catch (Exception ex)
         {
